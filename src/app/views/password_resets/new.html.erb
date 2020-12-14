@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="py-3 text-left">
+        <div class="d-flex flex-row align-items-center mb-2">
+            <i class="fas fa-undo fa-3x mr-3"></i>
+            <h1>Forgot password</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+            <div class="mb-3">
+                <%= f.label :メールアドレス %>
+                <%= f.text_field :email,placeholder:'メールアドレスを入力してください', class: 'form-control' %>
+            </div>
+            <%= f.submit "パスワード再設定メールを送信する", class: "btn btn-primary btn-lg btn-block" %>
+            <% end %>
+        </div>
+    </div>
+</div>

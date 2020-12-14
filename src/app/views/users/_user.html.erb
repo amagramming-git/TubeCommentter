@@ -1,0 +1,18 @@
+<div class="col-md-2">
+  <div class="card mb-4 box-shadow h-5">
+    <div class="embed-responsive embed-responsive-1by1">
+      <%= link_to image_tag( gravatar_user_url(user), alt: user.name, class: "img-fluid embed-responsive-item"), user , class: "zoomIn"%>
+    </div>
+    <div class="card-body">
+      <div class="mb-2">
+        <p>ユーザーID:<%= user.id%></p>
+        <p class="card-text textOverflow">
+          <%= link_to user.name, user %>
+        </p>
+      </div>
+      <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
+    </div>
+  </div>
+</div>

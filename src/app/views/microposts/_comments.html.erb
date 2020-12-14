@@ -1,0 +1,16 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+<% if  @comments.length == 0%>
+  <div class="alert alert-info">まだ一件もコメントがありません</div>
+<% else %>
+  <% @comments.each do |comment|%>
+    <div class="border-bottom" style="padding:10px;">
+      <p class="card-text">
+        <%= link_to gravatar_for( comment.user , size: 30), comment.user ,class:"mr-2"%>
+        <%= link_to comment.user.name, comment.user ,class:"text-secondary"%>
+      </p>
+      <p class="card-text"><%= comment.content %></p>
+    </div>
+  <% end %>
+<% end %>

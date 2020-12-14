@@ -1,0 +1,24 @@
+<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-3">
+        <%= f.label :ユーザー名 %>
+        <%= f.text_field :name,placeholder:'ユーザー名を入力してください', class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :メールアドレス %>
+        <%= f.text_field :email,placeholder:'メールアドレスを入力してください', class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :パスワード %>
+        <%= f.text_field :password,placeholder:'パスワードを入力してください', class: 'form-control' ,type: "password" %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :パスワード確認 %>
+        <%= f.text_field :password_confirmation,placeholder:'確認のためパスワードをもう一度入力してください', class: 'form-control' ,type: "password" %>
+    </div>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary btn-lg btn-block" %>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @feed_items.any? %>
+  <%= paginate @feed_items%>
+		<div class="row homemicroposts">
+      <%= render @feed_items %>
+    </div>
+	<%= paginate @feed_items%>
+<% end %>

@@ -1,0 +1,2 @@
+$("#comments").html("<%= j(render 'comments') %>");
+$("#commentform").html("<%= j(render 'shared/comment_form', video_id:  @redirect_video_id ,redirect_id: @redirect_id ) %>");

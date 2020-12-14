@@ -1,0 +1,33 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mb-1 box-shadow h-5">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%=@targetYoutube.video_id%>?&rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="card-footer">
+          <p class="text-muted small mb-0" for="exampleFormControlTextarea1">コメントを書き込む</p>
+          <div id="commentform">
+            <%= render 'shared/comment_form' , video_id:  @redirect_video_id ,redirect_id: @redirect_id%>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 box-shadow h-5">
+        <div class="card-body" id="comments">
+          <%= render 'microposts/comments'%>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="paginate">
+        <%= paginate @microposts ,remote: true%>
+      </div>
+      <div class="row homemicroposts" id="microposts">
+        <%= render @microposts %>
+      </div>
+      <div class="paginate">
+        <%= paginate @microposts ,remote: true%>
+      </div>
+    </div>
+  </div>
+</div>

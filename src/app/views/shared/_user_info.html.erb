@@ -1,0 +1,4 @@
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<p class="h4"><%= current_user.name %></p>
+<span><%= link_to "プロフィール", current_user ,class: "btn btn-info mb-2"%></span>
+<p class="text-muted">コメント投稿数:<%= pluralize(current_user.microposts.count,"") %></p>

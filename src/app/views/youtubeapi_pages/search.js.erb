@@ -1,0 +1,2 @@
+$("#youtubes").html("<%= j(render 'youtubes') %>");
+$(".paginate").html("<%= j(paginate @youtubes ,remote: true) %>");

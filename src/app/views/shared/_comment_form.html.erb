@@ -1,0 +1,16 @@
+<%= form_for(@micropost = Micropost.new(), remote: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <% if logged_in? %><!-- ログインしている場合 -->
+    <div class="field">
+        <%= f.text_area :content, placeholder: "" ,class: "form-control mb-2" ,rows: "2"%>
+        <%= f.hidden_field :video_id,value: video_id %>
+        <%= hidden_field_tag :redirect_id, redirect_id %>
+    </div>
+    <%= f.submit "コメント", class: "btn btn-primary btn-sm float-right"%>
+  <% else %><!--　ログインしていない場合 -->
+    <div class="field">
+        <%= f.text_area :content, placeholder: "コメントをする場合はログインしてください" ,class: "form-control mb-2" ,rows: "2" , readonly: true%>
+    </div>
+    <%= f.submit "コメント", class: "btn btn-secondary btn-sm float-right" ,disabled: "disabled"%>
+  <% end %>
+<% end %>

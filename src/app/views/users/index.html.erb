@@ -1,0 +1,10 @@
+<% provide(:title, 'All users') %>
+<div class="container">
+  <h1>ユーザー一覧</h1>
+  <%= paginate @users%>
+  <div class="row users">
+    <!--この書き方実はすごいからRailsチュートリアル10.3.5を見てみてね-->
+    <%= render @users %>
+  </div>
+  <%= paginate @users%>
+</div>

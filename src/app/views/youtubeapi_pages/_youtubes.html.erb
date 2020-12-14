@@ -1,0 +1,21 @@
+<%@youtubes.each do |youtube|%>
+  <div class="col-md-3">
+    <div class="card mb-4 box-shadow h-5">
+      <div class="embed-responsive embed-responsive-16by9">
+        <%= link_to image_tag("http://i.ytimg.com/vi/#{ youtube.video_id }/maxresdefault.jpg", alt: "icon",class:"img-fluid"),show_path(video_id: youtube.video_id),class: "embed-responsive-item zoomIn" %>
+      </div>
+      <div class="card-body">
+        <div class="mb-2">
+          <p class="card-text text-secondary textOverflow">
+            <%= image_tag youtube.channel_icon, alt: "channelIcon",width:"30",height:"30",class:"mr-2"%>
+            <%= youtube.channel_title%>
+          </p>
+        </div>
+        <p class="card-text textOverflow"><%= youtube.description %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted"><%= time_ago_in_words(youtube.published_at) %>前</small>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>

@@ -1,0 +1,18 @@
+<% provide(:title, @title) %>
+<div class="container">
+  <div class="py-3 text-center">
+    <%= gravatar_for @user %>
+    <p class="h4"><%= @user.name %></p>
+    <span><%= link_to "プロフィール", @user ,class: "btn btn-info mb-2"%></span>
+    <p class="text-muted">コメント投稿数:<%= @user.microposts.count %></p>
+    <%= render 'shared/stats' %>
+  </div>
+  <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <div class="row users follow">
+        <%= render @users %>
+      </div>
+      <%= paginate @users%>
+    <% else%>
+    <% end %>
+</div>

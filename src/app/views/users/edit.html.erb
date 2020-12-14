@@ -1,0 +1,30 @@
+<% provide(:title, "Edit user") %>
+<% provide(:button_text, '編集を保存する') %>
+<div class="container">
+    <div class="py-3 text-left">
+        <div class="d-flex flex-row align-items-center mb-2">
+            <i class="fas fa-user-cog fa-3x mr-3"></i>
+            <h1>Update your profile</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <div class="border-bottom mb-2 py-3">
+                <div class="container">
+                    <h4 class="mb-3">ユーザー情報入力欄</h4>
+                    <%= render 'form' %>
+                </div>
+            </div>
+            <div class="py-3">
+                <div class="container">
+                    <h4 class="mb-3">ユーザー画像変更</h4>
+                    <div class="gravatar_edit">
+                        <%= gravatar_for @user %>
+                        <a href="http://gravatar.com/emails" target="_blank" rel="noopener" class="btn btn-primary ml-3">変更</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

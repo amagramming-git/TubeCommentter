@@ -1,0 +1,13 @@
+  <div class="container">
+		<div class="btn-group my-3">
+			<% if !(@prev_page_token.nil?) %>
+				<%= link_to "前へ", search_path(keyword: @keyword,page_token: @prev_page_token),class: "btn btn-outline-secondary" %>
+			<% end%>
+			<% if !(@next_page_token.nil?) %>
+				<%= link_to "次へ", search_path(keyword: @keyword,page_token: @next_page_token),class: "btn btn-outline-secondary" %>
+			<% end%>
+		</div>
+		<div class="row" id="youtubes">
+			<%= render 'youtubes' %>
+		</div>
+	</div>

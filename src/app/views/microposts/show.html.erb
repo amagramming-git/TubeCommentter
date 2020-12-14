@@ -1,0 +1,54 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card mb-1 box-shadow h-5">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%=@targetmicropost.video_id%>?&rel=0" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <div class="mb-2">
+          <p class="card-text textOverflow">
+            <%= link_to gravatar_for(@targetmicropost.user, size: 30), @targetmicropost.user ,class:"mr-2"%>
+            <%= link_to @targetmicropost.user.name, @targetmicropost.user ,class:"text-secondary"%>
+          </p>
+          </div>
+          <p class="card-text textOverflow"><%= @targetmicropost.content %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              <% if current_user?(@targetmicropost.user) %>
+                <%= link_to "delete", @targetmicropost, method: :delete,data: { confirm: "You sure?" },class: "btn btn-sm btn-outline-secondary" %>
+              <% end %>
+            </div>
+            <small class="text-muted"><%= time_ago_in_words(@targetmicropost.created_at) %>前</small>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p class="text-muted small mb-0" for="exampleFormControlTextarea1">コメントを書き込む</p>
+          <div id="commentform">
+            <%= render 'shared/comment_form' , video_id:  @redirect_video_id ,redirect_id: @redirect_id%>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4 box-shadow h-5">
+        <div class="card-body" id="comments">
+          <%= render 'comments' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-4">
+      <div class="paginate">
+        <%= paginate @microposts ,remote: true%>
+      </div>
+      <div class="row homemicroposts" id="microposts">
+        <%= render @microposts %>
+      </div>
+      <div class="paginate">
+        <%= paginate @microposts ,remote: true%>
+      </div>
+    </div>
+  </div>
+</div>

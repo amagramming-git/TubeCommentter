@@ -1,0 +1,26 @@
+<% provide(:title, @user.name) %>
+<div class="container">
+  <div class="py-3 text-center">
+    <%= gravatar_for @user %>
+    <h2><%= @user.name %></h2>
+    <%= render 'shared/stats' %>
+  </div>
+  <div class="mb-3">
+    <div class="row justify-content-center">
+      <h3>投稿したコメント (<%= @user.microposts.count %>)</h3>
+      <%= render 'follow_form' if logged_in? %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex flex-column align-items-center">
+      <div class="col-md-8">
+        <% if @user.microposts.any? %>
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <%= paginate @microposts %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
