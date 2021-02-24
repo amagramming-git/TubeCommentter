@@ -7,18 +7,18 @@
         </div>
         <div class="card-body">
           <div class="mb-2">
-          <p class="card-text textOverflow">
-            <%= link_to gravatar_for(@targetmicropost.user, size: 30), @targetmicropost.user ,class:"mr-2"%>
-            <%= link_to @targetmicropost.user.name, @targetmicropost.user ,class:"text-secondary"%>
-          </p>
+            <p class="card-text textOverflow">
+              <%= link_to gravatar_for(@targetmicropost.user, size: 30), @targetmicropost.user ,class:"mr-2"%>
+              <%= link_to @targetmicropost.user.name, @targetmicropost.user ,class:"text-secondary"%>
+            </p>
           </div>
           <p class="card-text textOverflow"><%= @targetmicropost.content %></p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              <!--button type="button" class="btn btn-sm btn-outline-secondary">View</button-->
+              <!--button type="button" class="btn btn-sm btn-outline-secondary">Edit</button-->
               <% if current_user?(@targetmicropost.user) %>
-                <%= link_to "delete", @targetmicropost, method: :delete,data: { confirm: "You sure?" },class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to "delete", @targetmicropost, method: :delete,data: { confirm: "You sure?" },class: "btn btn-sm btn-outline-secondary" %>
               <% end %>
             </div>
             <small class="text-muted"><%= time_ago_in_words(@targetmicropost.created_at) %>前</small>

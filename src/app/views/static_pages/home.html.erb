@@ -3,8 +3,8 @@
 <% if !(logged_in?) %>
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading"><%= get_the_web_site_name()%></h1>
-    <p class="lead text-muted">youtube動画への感想をシェアしよう</p>
+    <h1 class="jumbotron-heading backWhitesmoke"><%= get_the_web_site_name()%></h1>
+    <p class="lead backWhitesmoke">youtube動画への感想をシェアしよう</p>
     <p>
       <%= link_to "ゲストユーザーとして機能を使ってみる", login_path(session: {email: 'sample@railstutorial.org', password: 'password'}), method: :post, class: "btn btn-success rounded-pill mr-4" %>
     </p>
