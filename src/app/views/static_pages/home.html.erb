@@ -2,40 +2,41 @@
 <!--　ログインしていない場合 ジャンボトロンを表示-->
 <% if !(logged_in?) %>
 <section class="jumbotron text-center">
-	<div class="container">
-		<h1 class="jumbotron-heading"><%= get_the_web_site_name()%></h1>
-			<p class="lead text-muted">youtube動画への感想をシェアしよう</p>
-			<p>
-				<%= link_to "ゲストユーザーとして機能を使ってみる", '#', class: "btn btn-success rounded-pill mr-4" %>
-			</p>
-	</div>
+  <div class="container">
+    <h1 class="jumbotron-heading"><%= get_the_web_site_name()%></h1>
+    <p class="lead text-muted">youtube動画への感想をシェアしよう</p>
+    <p>
+      <%= link_to "ゲストユーザーとして機能を使ってみる", login_path(session: {email: 'sample@railstutorial.org', password: 'password'}), method: :post, class: "btn btn-success rounded-pill mr-4" %>
+    </p>
+  </div>
 </section>
 <% end %>
 
-<% if logged_in? %><!-- ログインしている場合 -->
-	<% provide(:micropost_col_size, 3) %>
-	<div class="container">
-		<div class="py-3 text-center">
-			<%= render 'shared/user_info' %>
-			<%= render 'shared/stats' %>
-		</div>
-		<h3>あなたのタイムライン</h3>
-		<div class="row">
-			<%= render 'shared/feed' %>
-		</div>
-	</div>
-<% else %><!--　ログインしていない場合 -->
-	<div class="container">
-		<h3>みんなの投稿</h3>
-		<div class="paginate">
-			<%= paginate @microposts ,remote: true%>
-		</div>
-		<div class="row" id="microposts">
-			<!--この書き方実はすごいからRailsチュートリアル10.3.5を見てみてね-->
-			<%= render @microposts %>
-		</div>
-		<div class="paginate">
-			<%= paginate @microposts ,remote: true%>
-		</div>
-	</div>
-<% end %><!-- end -->
+<% if logged_in? %>
+<!-- ログインしている場合 -->
+<% provide(:micropost_col_size, 3) %>
+<div class="container">
+  <div class="py-3 text-center">
+    <%= render 'shared/user_info' %>
+    <%= render 'shared/stats' %>
+  </div>
+  <h3>あなたのタイムライン</h3>
+  <div class="row">
+    <%= render 'shared/feed' %>
+  </div>
+</div>
+<% end %>
+<div class="container">
+  <h3>みんなの投稿</h3>
+  <div class="paginate">
+    <%= paginate @microposts ,remote: true%>
+  </div>
+  <div class="row" id="microposts">
+    <!--この書き方実はすごいからRailsチュートリアル10.3.5を見てみてね-->
+    <%= render @microposts %>
+  </div>
+  <div class="paginate">
+    <%= paginate @microposts ,remote: true%>
+  </div>
+</div>
+<!-- end -->
